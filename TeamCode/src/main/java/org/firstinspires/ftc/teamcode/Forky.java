@@ -3,39 +3,55 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by Jonah Rolfness on 10/8/2017.
  */
 
-@TeleOp (name = "TeleOP Tutorial" , group = "Tutorials")
-public class Test_DriveTrain extends LinearOpMode
+@TeleOp (name = "Forky TeleOp" , group = "Main")
+public class Forky extends LinearOpMode
 {
-    private DcMotor motorLeft1;
-    private DcMotor motorLeft2;
-    private DcMotor motorRight1;
-    private DcMotor motorRight2;
+    private DcMotor motorLeftDrive1;
+    private DcMotor motorLeftDrive2;
+    private DcMotor motorRightDrive1;
+    private DcMotor motorRightDrive2;
+    private DcMotor motorStrafe;
+    private DcMotor motorLeftLift;
+    private DcMotor motorRightLift;
+    private DcMotor motorRelicArm;
+    private Servo jewelServo;
 
     @Override
     public void runOpMode () throws InterruptedException
     {
 
-        motorLeft1 = hardwareMap.dcMotor.get("motorLeft1");
-        motorLeft2 = hardwareMap.dcMotor.get("motorLeft2");
-        motorRight1 = hardwareMap.dcMotor.get("motorRight1");
-        motorRight2 = hardwareMap.dcMotor.get("motorRight2");
+        motorLeftDrive1 = hardwareMap.dcMotor.get("motorLeftDrive1");
+        motorLeftDrive2 = hardwareMap.dcMotor.get("motorLeft2");
+        motorRightDrive1 = hardwareMap.dcMotor.get("motorRightDrive1");
+        motorRightDrive2 = hardwareMap.dcMotor.get("motorRightDrive2");
+        motorStrafe = hardwareMap.dcMotor.get("motorStrafe");
+        motorLeftLift = hardwareMap.dcMotor.get("motorLeftLift");
+        motorRightLift = hardwareMap.dcMotor.get("motorRightLift");
+        motorRelicArm = hardwareMap.dcMotor.get("motorRelicArm");
+        jewelServo = hardwareMap.servo.get ("jewelServo";
 
-        motorLeft1.setDirection(DcMotor.Direction.REVERSE);
-        motorLeft2.setDirection(DcMotor.Direction.REVERSE);
+        motorLeftDrive1.setDirection(DcMotor.Direction.REVERSE);
+        motorLeftDrive2.setDirection(DcMotor.Direction.REVERSE);
      waitForStart();
 
         while(opModeIsActive())
         {
-            motorLeft1.setPower(-gamepad1.left_stick_y);
-            motorLeft2.setPower(-gamepad1.left_stick_y);
-            motorRight1.setPower(-gamepad1.right_stick_y);
-            motorRight2.setPower(-gamepad1.right_stick_y);
+            motorLeftDrive1.setPower(-gamepad1.left_stick_y);
+            motorLeftDrive2.setPower(-gamepad1.left_stick_y);
+            motorRightDrive1.setPower(-gamepad1.right_stick_y);jm
+            motorRightDrive2.setPower(-gamepad1.right_stick_y);
+            motorStrafe.setPower(-gamepad1.left_stick_x);
+            motorStrafe.setPower(-gamepad1.right_stick_x);
+            motorLeftLift.setPower(-gamepad2.dpad_down);
+            motorLeftLift.setPower(-gamepad2.dpad_up);
+            motorRightLift.setPower(-gamepad2.a);
+            motorRightLift.setPower(-gamepad2.y);
 
             idle();
         }

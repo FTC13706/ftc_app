@@ -1,16 +1,16 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
  * Created by Jonah Rolfness on 10/8/2017.
  */
 
-@TeleOp (name = "TeleOP Tutorial" , group = "Tutorials")
-public class Test_DriveTrain extends LinearOpMode
+@Autonomous(name = "Autonomous Tutorial" , group = "Tutorials")
+public class Test_Auto extends LinearOpMode
 {
     private DcMotor motorLeft1;
     private DcMotor motorLeft2;
@@ -30,14 +30,6 @@ public class Test_DriveTrain extends LinearOpMode
         motorLeft2.setDirection(DcMotor.Direction.REVERSE);
      waitForStart();
 
-        while(opModeIsActive())
-        {
-            motorLeft1.setPower(-gamepad1.left_stick_y);
-            motorLeft2.setPower(-gamepad1.left_stick_y);
-            motorRight1.setPower(-gamepad1.right_stick_y);
-            motorRight2.setPower(-gamepad1.right_stick_y);
 
-            idle();
-        }
     }
 }
