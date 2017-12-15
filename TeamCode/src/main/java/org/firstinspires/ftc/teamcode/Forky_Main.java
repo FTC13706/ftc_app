@@ -43,6 +43,10 @@ public class Forky_Main extends LinearOpMode
 
         motorLeftDrive1.setDirection(DcMotor.Direction.REVERSE);            //Reversing Motors' default direction because they are flipped on the robot.
         motorLeftDrive2.setDirection(DcMotor.Direction.REVERSE);
+        leftArmServo.setPosition(0);
+        rightArmServo.setPosition(0);
+        rightArmServo.setDirection(Servo.Direction.REVERSE);
+        
      waitForStart();                                                        //Wait until Robot starts
 
         while(opModeIsActive())
@@ -55,20 +59,19 @@ public class Forky_Main extends LinearOpMode
             motorStrafe.setPower(-gamepad1.right_stick_x);
             motorLeftLift.setPower(-gamepad2.left_stick_y);                 //mapping lift motors to left stick y-axis on gamepad 2
             motorRightLift.setPower(-gamepad2.left_stick_y);
-            if (gamepad2.right_stick_y > 0) {
-                leftArmServo.setPosition(gamepad2.right_stick_y); }
-            else {
-                leftArmServo.setPosition(0); }
-
-            if (gamepad2.right_stick_y > 0) {
-                rightArmServo.setPosition(gamepad2.right_stick_y); }
-            else {
-                rightArmServo.setPosition(0); }
-
+            while (gamepad2.dpad_left)
+                leftArmServo.setPosition(leftArmServo.getPosition()-1);
+            while (gamepad2.dpad_right)
+                leftArmServo.setPosition(leftArmServo.getPosition()+1);
+            while (gamepad2.dpad_left)
+                rightArmServo.setPosition(rightArmServo.getPosition()-1);
+            while (gamepad2.dpad_right)
+                rightArmServo.setPosition(rightArmServo.getPosition()+1);
 
 
 
-            idle();                                                         //Idle until a command is given
+
+            idle();                                                          //Idle until a command is given
         }
     }
 }
