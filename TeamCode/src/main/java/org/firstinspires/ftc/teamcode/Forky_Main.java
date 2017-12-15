@@ -47,10 +47,10 @@ public class Forky_Main extends LinearOpMode
 
         while(opModeIsActive())
         {
-            motorLeftDrive1.setPower(gamepad1.left_stick_y);                //mapping the left Motors to the left joystick y-axis on gamepad 1
-            motorLeftDrive2.setPower(gamepad1.left_stick_y);
-            motorRightDrive1.setPower(gamepad1.right_stick_y);              //mapping the Right Motors to the right joystick y-axis on gamepad 1
-            motorRightDrive2.setPower(gamepad1.right_stick_y);
+            motorLeftDrive1.setPower(gamepad1.right_stick_y);                //mapping the left Motors to the left joystick y-axis on gamepad 1
+            motorLeftDrive2.setPower(gamepad1.right_stick_y);
+            motorRightDrive1.setPower(gamepad1.left_stick_y);              //mapping the Right Motors to the right joystick y-axis on gamepad 1
+            motorRightDrive2.setPower(gamepad1.left_stick_y);
             motorStrafe.setPower(-gamepad1.left_stick_x);                   //mapping strafe motors to x-axis on both joysticks on gamepad 1
             motorStrafe.setPower(-gamepad1.right_stick_x);
             motorLeftLift.setPower(-gamepad2.left_stick_y);                 //mapping lift motors to left stick y-axis on gamepad 2
