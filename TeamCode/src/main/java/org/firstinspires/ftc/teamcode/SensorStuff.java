@@ -1,16 +1,17 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by Jonah Rolfness on 10/8/2017.
+ * Created by Team Paradise on 12/14/2017.
  */
 
-@TeleOp (name = "Forky TeleOp" , group = "Main")
-public class Forky extends LinearOpMode
+@TeleOp (name = "SensorStuff" , group = "Main" )
+public class SensorStuff extends LinearOpMode
 {
     private DcMotor motorLeftDrive1;
     private DcMotor motorLeftDrive2;
@@ -20,10 +21,7 @@ public class Forky extends LinearOpMode
     private DcMotor motorLeftLift;
     private DcMotor motorRightLift;
     private DcMotor motorRelicArm;
-    private Servo jewelServo;
-    private Servo leftServoArm;
-    private Servo rightServoArm;
-
+    private TouchSensor touchSensor;
 
     @Override
     public void runOpMode () throws InterruptedException
@@ -37,28 +35,22 @@ public class Forky extends LinearOpMode
         motorLeftLift = hardwareMap.dcMotor.get("motorLeftLift");
         motorRightLift = hardwareMap.dcMotor.get("motorRightLift");
         motorRelicArm = hardwareMap.dcMotor.get("motorRelicArm");
-        jewelServo = hardwareMap.servo.get ("jewelServo");
-        leftServoArm = hardwareMap.servo.get ("leftServoArm");
-        rightServoArm = hardwareMap.servo.get ("rightServoArm");
+        touchSensor = hardwareMap.touchSensor.get("touchSensor");
 
-        motorLeftDrive1.setDirection(DcMotor.Direction.REVERSE);
-        motorLeftDrive2.setDirection(DcMotor.Direction.REVERSE);
-     waitForStart();
-
-        while(opModeIsActive())
+        while(1==1)
         {
-            motorLeftDrive1.setPower(gamepad1.right_stick_y);
-            motorLeftDrive2.setPower(gamepad1.right_stick_y);
-            motorRightDrive1.setPower(gamepad1.left_stick_y);
-            motorRightDrive2.setPower(gamepad1.left_stick_y);
-            motorStrafe.setPower(-gamepad1.left_stick_x);
-            motorStrafe.setPower(-gamepad1.right_stick_x);
-            motorLeftLift.setPower(-gamepad2.left_stick_y);
-            motorRightLift.setPower(-gamepad2.left_stick_y);
-
-
-
-            idle();
+            if (touchSensor.isPressed()) {
+                motorLeftDrive1.setPower(1);
+                motorLeftDrive2.setPower(1);
+                motorRightDrive1.setPower(1);
+                motorRightDrive2.setPower(1);
+            } else {
+                motorLeftDrive1.setPower(0);
+                motorLeftDrive2.setPower(0);
+                motorRightDrive1.setPower(0);
+                motorRightDrive2.setPower(0);
+            }
         }
     }
 }
+
