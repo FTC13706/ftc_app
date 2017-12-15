@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Documented by Ben Rheinfelder on 12/12/17.
  */
 
-@TeleOp (name = "Forky TeleOp4" , group = "Main")
-public class Forky_Documented extends LinearOpMode
+@TeleOp (name = "Forky Main" , group = "Main")
+public class Forky_Main extends LinearOpMode
 {
     private DcMotor motorLeftDrive1;                                        //inserting new private classes into LinearOp to define connected motors
     private DcMotor motorLeftDrive2;
