@@ -28,6 +28,7 @@ public class Test_Auto extends LinearOpMode
 
         motorLeft1.setDirection(DcMotor.Direction.REVERSE);
         motorLeft2.setDirection(DcMotor.Direction.REVERSE);
+
      waitForStart();
 
 
