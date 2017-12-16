@@ -43,10 +43,11 @@ public class Forky_Main extends LinearOpMode
 
         motorLeftDrive1.setDirection(DcMotor.Direction.REVERSE);            //Reversing Motors' default direction because they are flipped on the robot.
         motorLeftDrive2.setDirection(DcMotor.Direction.REVERSE);
-        leftArmServo.setPosition(0);
-        rightArmServo.setPosition(0);
+        leftArmServo.setPosition(0.2);
+        rightArmServo.setPosition(0.8);
         rightArmServo.setDirection(Servo.Direction.REVERSE);
-        
+
+
      waitForStart();                                                        //Wait until Robot starts
 
         while(opModeIsActive())
@@ -58,18 +59,19 @@ public class Forky_Main extends LinearOpMode
             motorStrafe.setPower(-gamepad1.left_stick_x);                   //mapping strafe motors to x-axis on both joysticks on gamepad 1
             motorStrafe.setPower(-gamepad1.right_stick_x);
             motorLeftLift.setPower(-gamepad2.left_stick_y);                 //mapping lift motors to left stick y-axis on gamepad 2
-            motorRightLift.setPower(-gamepad2.left_stick_y);
+            motorRightLift.setPower(gamepad2.left_stick_y);
+
             while (gamepad2.dpad_left)
-                leftArmServo.setPosition(leftArmServo.getPosition()-1);
+                leftArmServo.setPosition(leftArmServo.getPosition()-0.1);
+
             while (gamepad2.dpad_right)
-                leftArmServo.setPosition(leftArmServo.getPosition()+1);
-            while (gamepad2.dpad_left)
-                rightArmServo.setPosition(rightArmServo.getPosition()-1);
-            while (gamepad2.dpad_right)
-                rightArmServo.setPosition(rightArmServo.getPosition()+1);
+                leftArmServo.setPosition(leftArmServo.getPosition()+0.1);
 
+            while (gamepad2.b)
+                rightArmServo.setPosition(rightArmServo.getPosition()-0.1);
 
-
+            while (gamepad2.x)
+                rightArmServo.setPosition(rightArmServo.getPosition()+0.1);
 
             idle();                                                          //Idle until a command is given
         }
